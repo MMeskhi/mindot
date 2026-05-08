@@ -1,19 +1,20 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import Work from "@/components/Work";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+
+import HeroView from "@/views/HeroView";
+import ServicesView from "@/views/ServicesView";
+import WorkView from "@/views/WorkView";
+import ContactView from "@/views/ContactView";
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <main>
-        <Hero />
-        <Services />
-        <Work />
-        <Contact />
+        <HeroView />
+        <ServicesView />
+        <WorkView />
+        <ContactView />
       </main>
       <Footer />
     </>

@@ -2,29 +2,11 @@
 
 import Link from "next/link";
 import { useState } from "react";
-
-const projects = [
-  {
-    name: "NEXORA",
-    category: "Mobile App & Dashboard",
-    bg: "from-[#023661] to-[#011729]",
-  },
-  {
-    name: "SOLVIX",
-    category: "Mobile App & Dashboard",
-    bg: "from-[#023661] to-[#0057B8]/30",
-  },
-  {
-    name: "AURORA",
-    category: "Mobile App & Dashboard",
-    bg: "from-[#011729] to-[#023661]",
-  },
-];
+import { projects, workSection } from "@/server/data";
 
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
     <div className="rounded-sm overflow-hidden group cursor-pointer border border-[#0057B8]/20 hover:border-[#0057B8]/50 transition-colors">
-      {/* Placeholder image area */}
       <div className={`bg-linear-to-br ${project.bg} h-56 flex items-center justify-center`}>
         <svg width="120" height="80" viewBox="0 0 120 80" fill="none" className="opacity-80">
           <rect x="4" y="4" width="112" height="72" rx="4" stroke="#0057B8" strokeWidth="1" />
@@ -37,8 +19,6 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
           <path d="M24 20v10l6 4" stroke="#0057B8" strokeWidth="1" strokeLinecap="round" />
         </svg>
       </div>
-
-      {/* Card footer */}
       <div className="bg-[#023661] px-5 py-4 flex items-center justify-between">
         <div>
           <h3 className="text-[#F5F7FA] font-bold text-sm">{project.name}</h3>
@@ -60,17 +40,17 @@ export default function Work() {
         <div className="flex items-end justify-between mb-12">
           <div>
             <p className="text-[#FF5A1F] text-xs font-bold tracking-[0.25em] uppercase mb-4">
-              Featured Work
+              {workSection.eyebrow}
             </p>
             <h2 className="text-4xl md:text-5xl font-extrabold uppercase text-[#F5F7FA]">
-              Selected Projects
+              {workSection.heading}
             </h2>
           </div>
           <Link
-            href="#work"
+            href={workSection.viewAllHref}
             className="hidden sm:flex items-center gap-2 text-[#F5F7FA] text-xs font-bold tracking-widest hover:text-[#FF5A1F] transition-colors"
           >
-            VIEW ALL PROJECTS →
+            {workSection.viewAllLabel}
           </Link>
         </div>
 

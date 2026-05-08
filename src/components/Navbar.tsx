@@ -2,14 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-
-const navLinks = [
-  { label: "HOME", href: "/" },
-  { label: "ABOUT", href: "#about" },
-  { label: "SERVICES", href: "#services" },
-  { label: "WORK", href: "#work" },
-  { label: "CONTACT", href: "#contact" },
-];
+import { navLinks, siteInfo } from "@/server/data";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -30,7 +23,9 @@ export default function Navbar() {
               />
             </svg>
           </span>
-          <span className="text-[#F5F7FA] font-semibold text-lg tracking-wide">mindot</span>
+          <span className="text-[#F5F7FA] font-semibold text-lg tracking-wide">
+            {siteInfo.name}
+          </span>
         </Link>
 
         {/* Desktop nav */}

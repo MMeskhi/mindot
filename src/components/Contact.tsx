@@ -1,44 +1,11 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-
-function MailIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <rect x="1" y="3" width="16" height="12" rx="2" stroke="#FF5A1F" strokeWidth="1.5" />
-      <path d="M1 6l8 5 8-5" stroke="#FF5A1F" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function PhoneIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path
-        d="M3 2h4l1.5 4-2 1.5a10 10 0 004 4L12 9.5l4 1.5v4a1 1 0 01-1 1C6 16 2 10 2 3a1 1 0 011-1z"
-        stroke="#FF5A1F"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function PinIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path
-        d="M9 1a6 6 0 016 6c0 4-6 10-6 10S3 11 3 7a6 6 0 016-6z"
-        stroke="#FF5A1F"
-        strokeWidth="1.5"
-      />
-      <circle cx="9" cy="7" r="2" stroke="#FF5A1F" strokeWidth="1.5" />
-    </svg>
-  );
-}
+import { contactSection, contactDetails, formFields } from "@/server/data";
+import ContactIcon from "@/assets/ContactIcon";
 
 export default function Contact() {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<Record<string, string>>({
     name: "",
     email: "",
     company: "",
@@ -61,32 +28,30 @@ export default function Contact() {
           {/* Left */}
           <div>
             <p className="text-[#FF5A1F] text-xs font-bold tracking-[0.25em] uppercase mb-4">
-              Contact Us
+              {contactSection.eyebrow}
             </p>
             <h2 className="text-4xl md:text-5xl font-extrabold uppercase leading-tight mb-6 text-[#F5F7FA]">
-              Let&apos;s Start
+              {contactSection.headingLine1}
               <br />
-              A Project Together
+              {contactSection.headingLine2}
             </h2>
-            <p className="text-[#76828E] text-sm leading-relaxed mb-10">
-              Have a question or want to work together?
-              <br />
-              We&apos;d love to hear from you.
+            <p className="text-[#76828E] text-sm leading-relaxed mb-10 whitespace-pre-line">
+              {contactSection.description}
             </p>
 
             <div className="flex flex-col gap-5">
-              {[
-                { Icon: MailIcon,  label: "Email Us",  value: "hello@mindot.studio" },
-                { Icon: PhoneIcon, label: "Call Us",   value: "+1 (234) 567-8901" },
-                { Icon: PinIcon,   label: "Visit Us",  value: "123 Design Street\nSan Francisco, CA" },
-              ].map(({ Icon, label, value }) => (
+              {contactDetails.map(({ iconKey, label, value }) => (
                 <div key={label} className="flex items-center gap-4">
                   <div className="w-8 h-8 flex items-center justify-center border border-[#0057B8]/30 rounded-sm bg-[#023661]">
-                    <Icon />
+                    <ContactIcon id={iconKey} />
                   </div>
                   <div>
-                    <p className="text-[10px] text-[#76828E] tracking-widest uppercase mb-0.5">{label}</p>
-                    <p className="text-sm text-[#F5F7FA] whitespace-pre-line">{value}</p>
+                    <p className="text-[10px] text-[#76828E] tracking-widest uppercase mb-0.5">
+                      {label}
+                    </p>
+                    <p className="text-sm text-[#F5F7FA] whitespace-pre-line">
+                      {value}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -96,36 +61,34 @@ export default function Contact() {
           {/* Right — form */}
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="grid sm:grid-cols-2 gap-4">
-              <input
-                className={inputClass}
-                placeholder="Your Name"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                required
-              />
-              <input
-                className={inputClass}
-                placeholder="Your Email"
-                type="email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                required
-              />
+              {formFields.slice(0, 2).map((field) => (
+                <input
+                  key={field.name}
+                  className={inputClass}
+                  placeholder={field.placeholder}
+                  type={field.type}
+                  value={form[field.name]}
+                  onChange={(e) =>
+                    setForm({ ...form, [field.name]: e.target.value })
+                  }
+                  required={field.required}
+                />
+              ))}
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
-              <input
-                className={inputClass}
-                placeholder="Company (Optional)"
-                value={form.company}
-                onChange={(e) => setForm({ ...form, company: e.target.value })}
-              />
-              <input
-                className={inputClass}
-                placeholder="Phone Number"
-                type="tel"
-                value={form.phone}
-                onChange={(e) => setForm({ ...form, phone: e.target.value })}
-              />
+              {formFields.slice(2, 4).map((field) => (
+                <input
+                  key={field.name}
+                  className={inputClass}
+                  placeholder={field.placeholder}
+                  type={field.type}
+                  value={form[field.name]}
+                  onChange={(e) =>
+                    setForm({ ...form, [field.name]: e.target.value })
+                  }
+                  required={field.required}
+                />
+              ))}
             </div>
             <textarea
               className={`${inputClass} resize-none h-36`}
@@ -138,7 +101,7 @@ export default function Contact() {
               type="submit"
               className="self-start flex items-center gap-2 bg-[#FF5A1F] text-white text-xs font-bold tracking-widest px-8 py-3.5 rounded-sm hover:bg-[#FF7A3D] transition-colors"
             >
-              SEND MESSAGE →
+              {contactSection.submitLabel}
             </button>
           </form>
         </div>
