@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { navLinks, siteInfo } from "@/server/data";
 import { useActiveSectionContext } from "@/context/ActiveSectionContext";
 
@@ -9,6 +9,13 @@ export default function Navbar() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSectionContext();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   function handleNavClick(section: string) {
     setActiveSection(section);
@@ -27,7 +34,13 @@ export default function Navbar() {
         >
           <span className="text-[#FF5A1F]">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <circle cx="14" cy="14" r="13" stroke="#FF5A1F" strokeWidth="1.5" />
+              <circle
+                cx="14"
+                cy="14"
+                r="13"
+                stroke="#FF5A1F"
+                strokeWidth="1.5"
+              />
               <path
                 d="M9 14c0-2.8 2.2-5 5-5s5 2.2 5 5M9 14c0 1.4.6 2.6 1.5 3.5M19 14c0 1.4-.6 2.6-1.5 3.5M12 11.5c0-1.1.9-2 2-2s2 .9 2 2M14 9v-1M11 10l-.7-.7M17 10l.7-.7M9 14h-1M20 14h-1"
                 stroke="#FF5A1F"
@@ -86,7 +99,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#023661] border-t border-[#0057B8]/20 px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-[#010a13] border-t border-[#0057B8]/20 px-6 py-8 flex flex-col gap-6 h-screen">
           {navLinks.map((link) => {
             const isActive = activeSection === link.section;
             return (
@@ -94,7 +107,7 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => handleNavClick(link.section)}
-                className={`text-xs font-semibold tracking-widest transition-colors hover:text-[#FF5A1F] ${
+                className={`font-semibold tracking-widest transition-colors hover:text-[#FF5A1F] ${
                   isActive ? "text-[#FF5A1F]" : "text-[#76828E]"
                 }`}
               >

@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#0057B8] opacity-10 blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center py-20">
+      <div className="relative max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-start py-20">
         {/* Left — copy */}
         <div className="flex flex-col gap-6">
           <p className="text-[#FF5A1F] text-xs font-bold tracking-[0.25em] uppercase">
