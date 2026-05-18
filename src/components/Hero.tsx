@@ -4,7 +4,6 @@ import { hero } from "@/server/data";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      <div className="absolute inset-0 dot-grid opacity-60" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#0057B8] opacity-10 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center py-20">
@@ -42,15 +41,19 @@ export default function Hero() {
 
           <div className="flex items-center gap-3 pt-6 text-[#76828E]">
             <div className="w-px h-8 bg-[#0057B8]/40" />
-            <span className="text-[10px] tracking-[0.2em] uppercase">{hero.scrollLabel}</span>
+            <span className="text-[10px] tracking-[0.2em] uppercase">
+              {hero.scrollLabel}
+            </span>
           </div>
         </div>
 
         {/* Right — decorative circles */}
         <div className="relative flex items-center justify-center h-80 md:h-[520px]">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 rounded-full bg-[#FF5A1F]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-[420px] md:h-[420px] rounded-full border border-[#0057B8]/30" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-[420px] md:h-[420px] rounded-full" />
           <div className="absolute bottom-8 left-1/4 w-5 h-5 rounded-full bg-[#FF5A1F]" />
+
+          <div className="absolute inset-0 h-full w-full -z-10 bg-[radial-gradient(#0057B8_1px,transparent_1px)] bg-size-[16px_16px] mask-[radial-gradient(ellipse_50%_50%_at_50%_50%,#000_75%,transparent_100%)]" />
         </div>
       </div>
     </section>
