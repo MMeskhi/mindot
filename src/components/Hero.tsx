@@ -39,8 +39,11 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-3 pt-6 text-[#76828E]">
-            <div className="w-px h-8 bg-[#0057B8]/40" />
+          <div className="flex items-center gap-4 pt-6 text-[#76828E]">
+            <div className="flex flex-col justify-center items-start">
+              <div className="w-px h-8 bg-orange" />
+              <div className="w-2 h-2 rounded-full bg-orange ml-[-3.3px]" />
+            </div>
             <span className="text-[10px] tracking-[0.2em] uppercase">
               {hero.scrollLabel}
             </span>

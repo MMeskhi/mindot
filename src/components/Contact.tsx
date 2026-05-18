@@ -19,7 +19,7 @@ export default function Contact() {
   }
 
   const inputClass =
-    "bg-[#023661] border border-[#0057B8]/25 rounded-sm px-4 py-3 text-sm text-[#F5F7FA] placeholder:text-[#76828E] focus:outline-none focus:border-[#FF5A1F] transition-colors w-full";
+    " border border-[#0057B8]/25 rounded-sm px-4 py-3 text-sm text-[#F5F7FA] placeholder:text-[#76828E] focus:outline-none focus:border-[#FF5A1F] transition-colors w-full";
 
   return (
     <section id="contact" className="py-24">
@@ -99,7 +99,7 @@ export default function Contact() {
             />
             <button
               type="submit"
-              className="self-start flex items-center gap-2 bg-[#FF5A1F] text-white text-xs font-bold tracking-widest px-8 py-3.5 rounded-sm hover:bg-[#FF7A3D] transition-colors"
+              className="self-start flex items-center gap-2 bg-[#FF5A1F] text-white text-xs font-bold tracking-widest px-8 py-3.5 rounded-sm hover:bg-[#FF7A3D] transition-colors cursor-pointer"
             >
               {contactSection.submitLabel}
             </button>
