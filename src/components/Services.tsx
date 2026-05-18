@@ -3,7 +3,7 @@ import ServiceIcon from "@/assets/ServiceIcon";
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-[#011729]">
+    <section id="services" className="py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="grid md:grid-cols-2 gap-8 mb-16 items-end">

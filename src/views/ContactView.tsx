@@ -1,5 +1,13 @@
+"use client";
+
 import Contact from "@/components/Contact";
+import { useSectionInView } from "@/hooks/useSectionInView";
 
 export default function ContactView() {
-  return <Contact />;
+  const ref = useSectionInView("contact", 0.4);
+  return (
+    <div ref={ref}>
+      <Contact />
+    </div>
+  );
 }

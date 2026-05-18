@@ -13,11 +13,11 @@ export const siteInfo = {
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
 export const navLinks = [
-  { label: "HOME", href: "/" },
-  { label: "ABOUT", href: "#about" },
-  { label: "SERVICES", href: "#services" },
-  { label: "WORK", href: "#work" },
-  { label: "CONTACT", href: "#contact" },
+  { label: "HOME",     href: "/",         section: "home" },
+  { label: "ABOUT",    href: "#about",    section: "about" },
+  { label: "SERVICES", href: "#services", section: "services" },
+  { label: "WORK",     href: "#work",     section: "work" },
+  { label: "CONTACT",  href: "#contact",  section: "contact" },
 ];
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────

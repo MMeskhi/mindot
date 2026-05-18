@@ -7,16 +7,43 @@ import { projects, workSection } from "@/server/data";
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
     <div className="rounded-sm overflow-hidden group cursor-pointer border border-[#0057B8]/20 hover:border-[#0057B8]/50 transition-colors">
-      <div className={`bg-linear-to-br ${project.bg} h-56 flex items-center justify-center`}>
-        <svg width="120" height="80" viewBox="0 0 120 80" fill="none" className="opacity-80">
-          <rect x="4" y="4" width="112" height="72" rx="4" stroke="#0057B8" strokeWidth="1" />
+      <div
+        className={`bg-linear-to-br ${project.bg} h-56 flex items-center justify-center`}
+      >
+        <svg
+          width="120"
+          height="80"
+          viewBox="0 0 120 80"
+          fill="none"
+          className="opacity-80"
+        >
+          <rect
+            x="4"
+            y="4"
+            width="112"
+            height="72"
+            rx="4"
+            stroke="#0057B8"
+            strokeWidth="1"
+          />
           <rect x="12" y="12" width="30" height="56" rx="2" fill="#023661" />
           <rect x="50" y="12" width="60" height="26" rx="2" fill="#023661" />
           <rect x="50" y="42" width="28" height="26" rx="2" fill="#023661" />
           <rect x="82" y="42" width="28" height="26" rx="2" fill="#023661" />
-          <path d="M56 30l8-8 6 6 8-10 8 6" stroke="#0057B8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M56 30l8-8 6 6 8-10 8 6"
+            stroke="#0057B8"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
           <circle cx="24" cy="30" r="10" stroke="#0057B8" strokeWidth="1" />
-          <path d="M24 20v10l6 4" stroke="#0057B8" strokeWidth="1" strokeLinecap="round" />
+          <path
+            d="M24 20v10l6 4"
+            stroke="#0057B8"
+            strokeWidth="1"
+            strokeLinecap="round"
+          />
         </svg>
       </div>
       <div className="bg-[#023661] px-5 py-4 flex items-center justify-between">
@@ -34,7 +61,7 @@ export default function Work() {
   const [active, setActive] = useState(0);
 
   return (
-    <section id="work" className="py-24 bg-[#011729]">
+    <section id="work" className="py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="flex items-end justify-between mb-12">

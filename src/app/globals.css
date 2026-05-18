@@ -5,7 +5,7 @@
   --orange-hover:#FF7A3D;
   --blue-deep:   #023661;
   --blue-bright: #0057B8;
-  --bg-primary:  #011729;
+  --bg-primary:  #010a13;
   --bg-card:     #023661;
   --dark-gray:   #3F3A42;
   --cool-gray:   #76828E;
@@ -13,7 +13,7 @@
 }
 
 @theme inline {
-  --color-background:   var(--bg-primary);
+  --color-background:   var(--blue-deep);
   --color-foreground:   var(--soft-white);
   --color-orange:       var(--orange);
   --color-blue-deep:    var(--blue-deep);
@@ -26,6 +26,7 @@
 
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
