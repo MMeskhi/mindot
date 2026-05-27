@@ -13,11 +13,11 @@ export const siteInfo = {
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
 export const navLinks = [
-  { label: "HOME",     href: "/",         section: "home" },
-  { label: "ABOUT",    href: "#about",    section: "about" },
+  { label: "HOME", href: "/", section: "home" },
+  { label: "ABOUT", href: "#about", section: "about" },
   { label: "SERVICES", href: "#services", section: "services" },
-  { label: "WORK",     href: "#work",     section: "work" },
-  { label: "CONTACT",  href: "#contact",  section: "contact" },
+  { label: "WORK", href: "#work", section: "work" },
+  { label: "CONTACT", href: "#contact", section: "contact" },
 ];
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
@@ -107,17 +107,17 @@ export const projects = [
   {
     name: "NEXORA",
     category: "Mobile App & Dashboard",
-    bg: "from-[#023661] to-[#011729]",
+    bg: "from-[#023661]/20 to-[#011729]/30",
   },
   {
     name: "SOLVIX",
     category: "Mobile App & Dashboard",
-    bg: "from-[#023661] to-[#0057B8]/30",
+    bg: "from-[#023661]/20 to-[#0057B8]/30",
   },
   {
     name: "AURORA",
     category: "Mobile App & Dashboard",
-    bg: "from-[#011729] to-[#023661]",
+    bg: "from-[#011729]/30 to-[#023661]/20",
   },
 ];
 

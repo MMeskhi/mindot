@@ -46,7 +46,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
           />
         </svg>
       </div>
-      <div className="bg-[#023661] px-5 py-4 flex items-center justify-between">
+      <div className="bg-[#023661]/40 px-5 py-4 flex items-center justify-between">
         <div>
           <h3 className="text-[#F5F7FA] font-bold text-sm">{project.name}</h3>
           <p className="text-[#FF5A1F] text-xs mt-0.5">{project.category}</p>
@@ -94,10 +94,10 @@ export default function Work() {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`rounded-full transition-all ${
+              className={`rounded-full transition-all w-3 h-3 cursor-pointer ${
                 i === active
-                  ? "w-3 h-3 bg-[#FF5A1F]"
-                  : "w-2 h-2 bg-[#76828E] hover:bg-[#0057B8]"
+                  ? " bg-[#FF5A1F]"
+                  : " bg-[#76828E] hover:bg-[#0057B8]"
               }`}
               aria-label={`Go to project ${i + 1}`}
             />

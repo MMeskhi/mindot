@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { navLinks, siteInfo } from "@/server/data";
 import { useActiveSectionContext } from "@/context/ActiveSectionContext";
+import MindotLogo from "@/assets/mindot-logo.svg";
 
 export default function Navbar() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
@@ -30,28 +31,9 @@ export default function Navbar() {
         <Link
           href="/"
           onClick={() => handleNavClick("home")}
-          className="flex items-center gap-2 flex-1"
+          className="flex items-center flex-1"
         >
-          <span className="text-[#FF5A1F]">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <circle
-                cx="14"
-                cy="14"
-                r="13"
-                stroke="#FF5A1F"
-                strokeWidth="1.5"
-              />
-              <path
-                d="M9 14c0-2.8 2.2-5 5-5s5 2.2 5 5M9 14c0 1.4.6 2.6 1.5 3.5M19 14c0 1.4-.6 2.6-1.5 3.5M12 11.5c0-1.1.9-2 2-2s2 .9 2 2M14 9v-1M11 10l-.7-.7M17 10l.7-.7M9 14h-1M20 14h-1"
-                stroke="#FF5A1F"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
-          </span>
-          <span className="text-[#F5F7FA] font-semibold text-lg tracking-wide">
-            {siteInfo.name}
-          </span>
+          <MindotLogo className="w-32" aria-label={siteInfo.name} />
         </Link>
 
         {/* Desktop nav */}

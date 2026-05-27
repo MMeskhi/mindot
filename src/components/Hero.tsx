@@ -56,7 +56,7 @@ export default function Hero() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-[420px] md:h-[420px] rounded-full" />
           <div className="absolute bottom-8 left-1/4 w-5 h-5 rounded-full bg-[#FF5A1F]" />
 
-          <div className="absolute inset-0 h-full w-full -z-10 bg-[radial-gradient(#0057B8_1px,transparent_1px)] bg-size-[16px_16px] mask-[radial-gradient(ellipse_70%_70%_at_50%_50%,black_40%,transparent_85%)]" />
+          <div className="absolute inset-0 h-full w-full opacity-80 -z-10 bg-[radial-gradient(#0057B8_1px,transparent_1px)] bg-size-[16px_16px] mask-[radial-gradient(ellipse_70%_90%_at_50%_40%,black_40%,transparent_90%)]" />
         </div>
       </div>
     </section>

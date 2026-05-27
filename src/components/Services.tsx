@@ -25,11 +25,11 @@ export default function Services() {
         </div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#0057B8]/10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#0057B8]/5">
           {services.map((service) => (
             <div
               key={service.title}
-              className="bg-[#011729] p-8 flex flex-col gap-4 group hover:bg-[#023661] transition-colors border border-[#0057B8]/12"
+              className=" p-8 flex flex-col gap-4 group hover:bg-[#011729] transition-colors border border-[#0057B8]/12"
             >
               <div className="opacity-90">
                 <ServiceIcon id={service.iconKey} />
