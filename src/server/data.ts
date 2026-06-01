@@ -117,7 +117,7 @@ export const projects = [
     image: "/images/egofy.webp",
   },
   {
-    name: "Univox",
+    name: "Unvox",
     category: "Request Management",
     bg: "from-[#011729]/10 to-[#023661]/40",
     image: "/images/univox.webp",
