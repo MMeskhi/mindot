@@ -1,50 +1,28 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
+import { useState, useRef, useEffect } from "react";
 import { projects, workSection } from "@/server/data";
+
+function getPerPage() {
+  if (typeof window === "undefined") return 3;
+  if (window.innerWidth < 640) return 1;
+  if (window.innerWidth < 1024) return 2;
+  return 3;
+}
 
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
     <div className="rounded-sm overflow-hidden group cursor-pointer border border-[#0057B8]/20 hover:border-[#0057B8]/50 transition-colors">
       <div
-        className={`bg-linear-to-br ${project.bg} h-56 flex items-center justify-center`}
+        className={`bg-linear-to-br ${project.bg} h-56 flex items-center justify-center relative`}
       >
-        <svg
-          width="120"
-          height="80"
-          viewBox="0 0 120 80"
-          fill="none"
-          className="opacity-80"
-        >
-          <rect
-            x="4"
-            y="4"
-            width="112"
-            height="72"
-            rx="4"
-            stroke="#0057B8"
-            strokeWidth="1"
-          />
-          <rect x="12" y="12" width="30" height="56" rx="2" fill="#023661" />
-          <rect x="50" y="12" width="60" height="26" rx="2" fill="#023661" />
-          <rect x="50" y="42" width="28" height="26" rx="2" fill="#023661" />
-          <rect x="82" y="42" width="28" height="26" rx="2" fill="#023661" />
-          <path
-            d="M56 30l8-8 6 6 8-10 8 6"
-            stroke="#0057B8"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <circle cx="24" cy="30" r="10" stroke="#0057B8" strokeWidth="1" />
-          <path
-            d="M24 20v10l6 4"
-            stroke="#0057B8"
-            strokeWidth="1"
-            strokeLinecap="round"
-          />
-        </svg>
+        <Image
+          src={project.image}
+          fill
+          alt={project.name}
+          className="w-auto absolute inset-0 -z-10"
+        />
       </div>
       <div className="bg-[#023661]/40 px-5 py-4 flex items-center justify-between">
         <div>
@@ -58,7 +36,37 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 }
 
 export default function Work() {
+  const [perPage, setPerPage] = useState(3);
   const [active, setActive] = useState(0);
+  const dragStartX = useRef<number | null>(null);
+
+  useEffect(() => {
+    const update = () => {
+      const pp = getPerPage();
+      setPerPage(pp);
+      setActive((a) => Math.min(a, Math.max(0, projects.length - pp)));
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const maxIndex = Math.max(0, projects.length - perPage);
+
+  const prev = () => setActive((a) => Math.max(0, a - 1));
+  const next = () => setActive((a) => Math.min(maxIndex, a + 1));
+
+  const onPointerStart = (x: number) => {
+    dragStartX.current = x;
+  };
+
+  const onPointerEnd = (x: number) => {
+    if (dragStartX.current === null) return;
+    const delta = dragStartX.current - x;
+    if (delta > 50) next();
+    else if (delta < -50) prev();
+    dragStartX.current = null;
+  };
 
   return (
     <section id="work" className="py-24">
@@ -73,33 +81,52 @@ export default function Work() {
               {workSection.heading}
             </h2>
           </div>
-          <Link
-            href={workSection.viewAllHref}
-            className="hidden sm:flex items-center gap-2 text-[#F5F7FA] text-xs font-bold tracking-widest hover:text-[#FF5A1F] transition-colors"
+        </div>
+
+        {/* Carousel */}
+        <div className="relative">
+          {/* Track */}
+          <div
+            className="overflow-hidden cursor-grab active:cursor-grabbing select-none"
+            onMouseDown={(e) => onPointerStart(e.clientX)}
+            onMouseUp={(e) => onPointerEnd(e.clientX)}
+            onMouseLeave={() => {
+              dragStartX.current = null;
+            }}
+            onTouchStart={(e) => onPointerStart(e.touches[0].clientX)}
+            onTouchEnd={(e) => onPointerEnd(e.changedTouches[0].clientX)}
           >
-            {workSection.viewAllLabel}
-          </Link>
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateX(-${active * (100 / perPage)}%)`,
+              }}
+            >
+              {projects.map((project) => (
+                <div
+                  key={project.name}
+                  className="flex-shrink-0 px-3"
+                  style={{ width: `${100 / perPage}%` }}
+                >
+                  <ProjectCard project={project} />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Projects grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <ProjectCard key={project.name} project={project} />
-          ))}
-        </div>
-
-        {/* Carousel dots */}
+        {/* Dots */}
         <div className="flex items-center justify-center gap-2 mt-8">
-          {projects.map((_, i) => (
+          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`rounded-full transition-all w-3 h-3 cursor-pointer ${
+              className={`rounded-full transition-all cursor-pointer ${
                 i === active
-                  ? " bg-[#FF5A1F]"
-                  : " bg-[#76828E] hover:bg-[#0057B8]"
+                  ? "w-3 h-3 bg-[#FF5A1F]"
+                  : "w-3 h-3 bg-[#76828E] hover:bg-[#0057B8]"
               }`}
-              aria-label={`Go to project ${i + 1}`}
+              aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>

@@ -105,19 +105,28 @@ export const workSection = {
 
 export const projects = [
   {
-    name: "NEXORA",
-    category: "Mobile App & Dashboard",
-    bg: "from-[#023661]/20 to-[#011729]/30",
+    name: "Dohris",
+    category: "Verification, Fraud",
+    bg: "from-[#023661]/10 to-[#011729]/60",
+    image: "/images/dohris.webp",
   },
   {
-    name: "SOLVIX",
-    category: "Mobile App & Dashboard",
-    bg: "from-[#023661]/20 to-[#0057B8]/30",
+    name: "Egofy",
+    category: "People Management",
+    bg: "from-[#023661]/10 to-[#0057B8]/40",
+    image: "/images/egofy.webp",
   },
   {
-    name: "AURORA",
-    category: "Mobile App & Dashboard",
-    bg: "from-[#011729]/30 to-[#023661]/20",
+    name: "Univox",
+    category: "Request Management",
+    bg: "from-[#011729]/10 to-[#023661]/40",
+    image: "/images/univox.webp",
+  },
+  {
+    name: "Tikito",
+    category: "Business Chat",
+    bg: "from-[#011729]/10 to-[#023661]/60",
+    image: "/images/tikito.webp",
   },
 ];
 
