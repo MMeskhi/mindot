@@ -106,25 +106,25 @@ export const workSection = {
 export const projects = [
   {
     name: "Dohris",
-    category: "Verification, Fraud",
+    category: "People Management",
     bg: "from-[#023661]/10 to-[#011729]/60",
     image: "/images/dohris.webp",
   },
   {
     name: "Egofy",
-    category: "People Management",
+    category: "Verification, Fraud",
     bg: "from-[#023661]/10 to-[#0057B8]/40",
     image: "/images/egofy.webp",
   },
   {
     name: "Unvox",
-    category: "Request Management",
+    category: "Business Chat",
     bg: "from-[#011729]/10 to-[#023661]/40",
     image: "/images/univox.webp",
   },
   {
     name: "Tikito",
-    category: "Business Chat",
+    category: "Request Management",
     bg: "from-[#011729]/10 to-[#023661]/60",
     image: "/images/tikito.webp",
   },
